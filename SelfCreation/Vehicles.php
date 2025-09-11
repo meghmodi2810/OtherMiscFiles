@@ -74,7 +74,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </fieldset>
         <?php
         if (isset($_POST['btnInsert'])) {
-            
+
             // For insertion 
             $ownername = $_POST['txtOwnername'];
             $numberplate = $_POST['txtVehicleNumberPlate'];
@@ -82,7 +82,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             $vehicletype = $_POST['txtVehicleType'];
 
             $stmt = $conn->prepare("INSERT INTO vehicles(owner_name, plate_number, vehicle_model, vehicle_type) VALUES(?, ?, ?, ?)");
-            $stmt->bind_params("ssss", $ownername, $numberplate, $vehiclemodel, $vehicletype);
+            $stmt->bind_param("ssss", $ownername, $numberplate, $vehiclemodel, $vehicletype);
 
             if ($stmt->execute()) {
                 echo "<p align='center' style='color: green;'>Record inserted successfully!</p>";
@@ -90,6 +90,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 echo "<p align='center' style='color: red;'>Error: " . $stmt->error . "</p>";
             }
         }
+
+        // For selection
+        echo "<BR><BR>";
+        echo "<h1 align='center'style='background-color: lightblue; text-decoration: underline dashed;'>All items</h1>";
+        $stmt = $conn->prepare("SELECT * FROM vehicles");
+        $stmt->execute();
+
+        $res = $stmt->get_result();
+
+        echo "<table border='1' align='center' style='font-size: 18px;'>";
+        echo "<tr>";
+        echo "<th>Vehicle ID</th>";
+        echo "<th>Plate Number</th>";
+        echo "<th>Owner Name</th>";
+        echo "<th>Vehicle Model</th>";
+        echo "<th>Vehicle Type</th>";
+        echo "</tr>";
+
+        while ($row = $res->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row['vehicle_id']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['plate_number']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['owner_name']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['vehicle_model']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['vehicle_type']) . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
         ?>
     </body>
 </html>
