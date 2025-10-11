@@ -64,7 +64,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             $stmt = $conn->prepare("INSERT INTO parking_lots(location, capacity, hourly_rate) VALUES(?, ?, ?)");
             $stmt->bind_param("sdd", $location, $capacity, $rate);
-
             if ($stmt->execute()) {
                 echo "<p align='center' style='color: green;'>Record inserted successfully!</p>";
             } else {

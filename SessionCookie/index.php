@@ -69,7 +69,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
             } else {
                 echo 'Invalid Login Credentials! Please try again!';
             }
-            
         }
         
         ?>
