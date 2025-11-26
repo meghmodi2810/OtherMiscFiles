@@ -1,0 +1,6 @@
+{
+    "enabled": false,
+    "last_updated": "2025-10-26 20:46:59",
+    "updated_by": "admin",
+    "message": "Email service is currently paused. The action has been completed in the database, but no email was sent."
+}

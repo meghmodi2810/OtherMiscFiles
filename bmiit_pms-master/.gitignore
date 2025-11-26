@@ -1,0 +1,32 @@
+# BMIIT PMS - Git Ignore File
+
+# Composer dependencies (run 'composer install' to get these)
+/vendor/
+
+# IDE files
+/nbproject/private/
+.vscode/
+.idea/
+
+# Environment & sensitive config
+.env
+.env.local
+
+# Logs
+*.log
+email_queue_log.txt
+
+# Uploads & user-generated content
+/uploads/
+/files/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup & temporary files
+*.bak
+*.tmp
+*.cache
+
